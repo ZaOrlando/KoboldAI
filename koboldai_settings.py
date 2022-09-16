@@ -436,7 +436,7 @@ class model_settings(settings):
         self.sampler_order = [6, 0, 1, 2, 3, 4, 5]
         self.newlinemode = "n"
         self.lazy_load   = True # Whether or not to use torch_lazy_loader.py for transformers models in order to reduce CPU memory usage
-        self.revision    = None
+        self.revision    = "main"
         self.presets     = []   # Holder for presets
         self.selected_preset = ""
         self.uid_presets = []

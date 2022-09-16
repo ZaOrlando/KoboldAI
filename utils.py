@@ -7,15 +7,22 @@ import tempfile
 import requests
 import requests.adapters
 import time
-from transformers import __version__ as transformers_version
-from transformers import PreTrainedModel
+try:
+    from transformers import __version__ as transformers_version
+    from transformers import PreTrainedModel
+except:
+    PreTrainedModel = None
+    pass
 import packaging.version
 from tqdm.auto import tqdm
 import os
 import itertools
 from typing import List, Optional
 
-HAS_ACCELERATE = packaging.version.parse(transformers_version) >= packaging.version.parse("4.20.0.dev0")
+try:
+    HAS_ACCELERATE = packaging.version.parse(transformers_version) >= packaging.version.parse("4.20.0.dev0")
+except:
+    HAS_ACCELERATE = False
 try:
     import accelerate
 except ImportError:

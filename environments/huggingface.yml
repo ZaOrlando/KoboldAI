@@ -1,29 +1,22 @@
 name: koboldai
 channels:
-  - pytorch
   - conda-forge
   - defaults
 dependencies:
   - colorama
   - flask-socketio
   - flask-session
-  - pytorch=1.11.*
   - python=3.8.*
-  - cudatoolkit=11.1
   - eventlet
   - markdown
+  - requests
   - bleach=4.1.0
   - pip
   - git=2.35.1
   - sentencepiece
   - protobuf
-  - marshmallow>=3.13
-  - apispec-webframeworks
+  - tqdm
+  - tokenizers
   - pip:
-    - flask-cloudflared
-    - flask-ngrok
     - lupa==1.10
-    - transformers>=4.20.1
-    - accelerate
     - flask-session
-    - python-socketio[client]
