@@ -72,7 +72,17 @@ try:
     no_transformers = False
 except:
     from tokenizers import Tokenizer
-    tokenizer = Tokenizer.from_pretrained("gpt2")
+    class tokenizer_from_tokenizers(object):
+        def __init__(self):
+            self.tokenizer = Tokenizer.from_pretrained("gpt2")
+        def encode(self, text, max_length=None, truncation=False):
+            if truncation and max_length is not None:
+                return self.tokenizer.encode(text).ids[:max_length]
+            else:
+                return self.tokenizer.encode(text).ids
+        def decode(self, data):
+            return self.tokenizer.decode(data)
+    tokenizer = tokenizer_from_tokenizers()
     tokenizer._koboldai_header = tokenizer.encode("")
     tokenizer.add_bos_token = False
     tokenizer.add_prefix_space = False
